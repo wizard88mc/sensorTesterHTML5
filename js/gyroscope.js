@@ -1,9 +1,10 @@
 var recording = false;
+var lastTimestamp = 0;
 
 function startOrStopRecordingGyroscope() {
 	
 	if (recording) {
-		recording = false;
+		recording = false; lastTimestamp = 0;
 		window.removeEventListener('deviceorientation', gyroscopeHandler);
 	}
 	else {
@@ -14,9 +15,15 @@ function startOrStopRecordingGyroscope() {
 
 function gyroscopeHandler(eventData) {
 	
-	document.getElementById("alphaGyroscope").innerHTML = eventData.alpha;
-	document.getElementById("betaGyroscope").innerHTML = eventData.beta;
-	document.getElementById("gammaGyroscope").innerHTML = eventData.gamma;
-	document.getElementById("intervalGyroscope").innerHTML = eventData.interval;
-	console.log(eventData);
+	if (printData) {
+		document.getElementById("alphaGyroscope").innerHTML = eventData.alpha;
+		document.getElementById("betaGyroscope").innerHTML = eventData.beta;
+		document.getElementById("gammaGyroscope").innerHTML = eventData.gamma;
+	}
+	if (printInterval) {
+		if (lastTimestamp != 0) {
+			 document.getElementById("intervalGyroscope").innerHTML = eventData.timeStamp - lastTimestamp;
+		}
+		lastTimestamp = eventData.timeStamp;
+	}
 }

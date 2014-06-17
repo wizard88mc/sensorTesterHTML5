@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+	<title>Luminosity tester</title>
+	<script src="js/luminosity.js"></script>
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<button type="button" onclick="startOrStopRecordingLuminosity();">Start record data</button> <br />
+	<input type="checkbox" name="printData" id="printData" onclick="changeCheckboxValue();" /><label for="printData">Stampa valori</label><br />
+	<input type="checkbox" name="printInterval" id="printInterval" /><label for="printInterval">Stampa intervallo</label>
+	<p>Valore luminosità: <span id="luminosityValue">0.0</span></p>
+	<p>Intervallo temporale: <span id="intervalLuminosity">0</span></p>
+</body>

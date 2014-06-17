@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <head>
 	<title>Accelerometer tester</title>
+	<script src="js/utils.js"></script>
 	<script src="js/accelerometer.js"></script>
 </head>
 <body>
 	
-	<button id="buttonStartRecording" type="button" onclick="startOrStopRecordingAccelerometer();">Registra dati</button>
-	
+	<button id="buttonStartRecording" type="button" onclick="startOrStopRecordingAccelerometer();">Registra dati</button><br />
+	<input type="checkbox" name="printData" id="printData" onclick="changeCheckboxValue();" /><label for="printData">Stampa valori</label><br />
+	<input type="checkbox" name="printInterval" id="printInterval" onclick="changeCheckboxValue();" /><label for="printInterval">Stampa intervallo</label>
 	<p>Accelerazione X: <span id="xAcceleration">0.0</span></p>
 	<p>Accelerazione Y: <span id="yAcceleration">0.0</span></p>
 	<p>Accelerazione Z: <span id="zAcceleration">0.0</span></p>

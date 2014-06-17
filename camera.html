@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<title>Camera tester</title>
+	<meta charset="UTF-8" />
+	<!--<script src="js/camera.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="style/style.css" />-->
+</head>
+<body>
+	<video id="video" autoplay></video>
+	<p id="error">Errore: </p>
+	<script>
+		
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
+						|| navigator.mozGetUserMedia || navigator.msGetUserMedia; 
+						
+		var video = document.getElementById('video');
+		
+		//video.style.width = window.screen.availWidth + "px";
+		//video.style.height = window.screen.availHeight + "px";
+		
+		var vgaConstraints = {
+		  video: {
+		    mandatory: {
+		      minWidth: 640,
+		      minHeight: 480
+		    }
+		  }
+		};
+		
+		if (navigator.getUserMedia) {
+			navigator.getUserMedia({video: true, audio: true}, function(stream) {
+				video.src = window.URL.createObjectURL(stream);
+			}, function(e) {
+				console.log("error");
+				document.getElementById("error").innerHTML = e;
+			});
+		}
+
+	</script>
+</body>
